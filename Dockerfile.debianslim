@@ -1,0 +1,15 @@
+FROM alpine:3.8 AS whois
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN apk add --no-cache python3
+
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+ENTRYPOINT ["python3", "test.py"]
+
+CMD ["google.com"]

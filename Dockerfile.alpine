@@ -1,0 +1,18 @@
+FROM alpine:3.9 AS whois
+
+WORKDIR /app
+
+ENV DOMAIN_NAME=dockerfile
+ENV DB_NAME=exotest
+
+COPY requirements.txt .
+
+RUN apk add --no-cache python3
+
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+ENTRYPOINT ["python3", "test.py"]
+
+CMD ["google.com"]

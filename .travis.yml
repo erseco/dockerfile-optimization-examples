@@ -1,0 +1,24 @@
+---
+language: ruby
+
+services:
+  - docker
+
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+
+  - docker build -t erseco/whois:debian -f Dockerfile.debian .
+  - docker push erseco/whois:debian
+
+  - docker build -t erseco/whois:debianslim -f Dockerfile.debianslim .
+  - docker push erseco/whois:debianslim
+
+  - docker build -t erseco/whois:python -f Dockerfile.python .
+  - docker push erseco/whois:python
+
+  - docker build -t erseco/whois:alpine -f Dockerfile.alpine .
+  - docker push erseco/whois:alpine
+
+script:
+  - bundle exec rake test

@@ -1,0 +1,10 @@
+version: '2'
+services:
+  alpine:
+    build: .
+    environment:
+      DOMAIN_NAME: compose
+      DB_NAME: exolever
+      DB_USER: exolever
+      DB_PASS: exolever
+      DB_HOST: postgres
