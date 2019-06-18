@@ -1,30 +1,17 @@
 #!/usr/bin/env python
 
-import sys
-import os
-import whois
-from PIL import Image, ImageFilter
-import cryptography
-from cryptography.fernet import Fernet
+# This code blurr the "Lenna.png" image file
 
-# Whois part
-parameter = "fsf.org"
-domain = whois.query(parameter)
-print(domain.__dict__)
-print(domain.expiration_date)
+import os
+from PIL import Image, ImageFilter
 
 # Pillow part
-print("Original image: %d" % os.stat("Lenna.png").st_size)
-original = Image.open("Lenna.png")
-blurred = original.filter(ImageFilter.BLUR)
-blurred.save("Lenna-blurred.png")
-print("Blurred image: %d" % os.stat("Lenna-blurred.png").st_size)
+in_file = "Lenna.png"
+out_file = "Lenna-blurred.png"
 
-# Criptography part
-key = Fernet.generate_key()
-message = "my deep dark secret".encode()
-f = Fernet(key)
-encrypted = f.encrypt(message)
-decrypted = f.decrypt(encrypted)
-print(message == decrypted)
-print(encrypted)
+original = Image.open(in_file)
+blurred = original.filter(ImageFilter.BLUR)
+blurred.save(out_file)
+
+print("Original image: %d" % os.stat(in_file).st_size)
+print("Blurred image: %d" % os.stat(out_file).st_size)

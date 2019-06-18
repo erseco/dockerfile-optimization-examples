@@ -1,5 +1,7 @@
 FROM python:3.6-alpine AS example
 
+RUN apk add --no-cache build-base zlib-dev jpeg-dev libpng-dev
+
 COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt

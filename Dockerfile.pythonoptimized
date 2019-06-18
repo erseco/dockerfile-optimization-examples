@@ -1,0 +1,30 @@
+FROM python:3.6-alpine AS example
+
+COPY requirements.txt .
+
+# Install build deps, then run `pip install`, then remove unneeded build deps all in a single step. Correct the path to your production requirements fil
+RUN apk add --no-cache \
+        jpeg \
+    && \
+    apk add --no-cache --virtual .build-deps  \
+        build-base \
+        zlib-dev \
+        jpeg-dev \
+        libpng-dev \
+    && \
+        pip3 install -r requirements.txt \
+    && \
+        apk del .build-deps --force-broken-world \
+    && \
+        find /usr/local -depth \
+            \( \
+                \( -type d -a \( -name test -o -name tests \) \) \
+                -o \
+                \( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
+            \) -exec rm -rf '{}' + \
+        && rm -rf /usr/src/python
+
+COPY . .
+
+
+RUN python3 test.py
