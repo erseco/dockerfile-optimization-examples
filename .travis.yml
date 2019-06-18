@@ -7,6 +7,7 @@ services:
 before_install:
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
+script:
   - time docker build -t erseco/dockerfile-optimization-examples:debian -f Dockerfile.debian .
   # - docker push erseco/dockerfile-optimization-examples:debian
 
@@ -26,6 +27,3 @@ before_install:
   # - docker push erseco/dockerfile-optimization-examples:scratch
 
   - docker images
-
-script:
-  - bundle exec rake test
