@@ -1,6 +1,4 @@
-FROM debian:stretch
-
-WORKDIR /app
+FROM debian:stretch AS example
 
 COPY requirements.txt .
 
@@ -10,6 +8,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-ENTRYPOINT ["python3", "test.py"]
-
-CMD ["google.com"]
+RUN python3 test.py

@@ -1,6 +1,4 @@
-FROM python:3.7-alpine
-
-WORKDIR /app
+FROM python:3.6-alpine AS example
 
 COPY requirements.txt .
 
@@ -8,6 +6,5 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-ENTRYPOINT ["python3", "test.py"]
+RUN python3 test.py
 
-CMD ["google.com"]

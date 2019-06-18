@@ -7,18 +7,22 @@ services:
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
+  - docker build -t erseco/dockerfile-optimization-examples:ubuntu -f Dockerfile.ubuntu .
+  - docker run erseco/dockerfile-optimization-examples:ubuntu
+  - docker push erseco/dockerfile-optimization-examples:ubuntu
 
-  - docker build -t erseco/whois:debian -f Dockerfile.debian .
-  - docker push erseco/whois:debian
 
-  - docker build -t erseco/whois:debianslim -f Dockerfile.debianslim .
-  - docker push erseco/whois:debianslim
+  - docker build -t erseco/dockerfile-optimization-examples:debian -f Dockerfile.debian .
+  - docker push erseco/dockerfile-optimization-examples:debian
 
-  - docker build -t erseco/whois:python -f Dockerfile.python .
-  - docker push erseco/whois:python
+  - docker build -t erseco/dockerfile-optimization-examples:debianslim -f Dockerfile.debianslim .
+  - docker push erseco/dockerfile-optimization-examples:debianslim
 
-  - docker build -t erseco/whois:alpine -f Dockerfile.alpine .
-  - docker push erseco/whois:alpine
+  - docker build -t erseco/dockerfile-optimization-examples:python -f Dockerfile.python .
+  - docker push erseco/dockerfile-optimization-examples:python
+
+  - docker build -t erseco/dockerfile-optimization-examples:alpine -f Dockerfile.alpine .
+  - docker push erseco/dockerfile-optimization-examples:alpine
 
 script:
   - bundle exec rake test
