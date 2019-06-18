@@ -1,45 +1,23 @@
-# dockerfile-optimization-examples
+# De Ballena a Gallopedro. Optimizando Dockerfiles
 
-----------------------------
+[![Build Status](https://travis-ci.org/erseco/dockerfile-optimization-examples.svg?branch=master)](https://travis-ci.org/erseco/dockerfile-optimization-examples)
 
-docker run -it alpine:3.8 sh
+ Algunos trucos y consejos para hacer que tus contenedores ocupen lo mínimo posible.
 
-ls -l /bin/sh
+ ## Formato de la propuesta
 
-bash -> ash
-apt -> apk
-libc -> musl
-vim -> vi
+ * Charla relámpago (20 minutos)
 
-# Packages
+ ## Descripción
 
-https://pkgs.alpinelinux.org/packages
+ ¿Te pasas la vida esperando a que termine ese `docker-compose pull`? ¿Tus macroservicios dockerizados tienen una masa mayor que la de un agujero negro? ¿Te preocupa la huella ecológica de tanto trasiego de información? En esta charla mostraré como hacemos en [OpenExO](https://www.openexo.com) para ajustar la junta de la trócola y hacer que nuestros contenedores ocupen lo mínimo posible.
 
-apk update
+ ## Público objetivo
 
-apk search curl
+ A cualquiera que trabaje con contenedores y sistemas de integración continua.
 
-apk add curl
+ ## Ponente(s)
 
-apk add tree
+ Ernesto Serrano ([@erseco](https://github.com/erseco)), DevOps Engineer en [OpenExO](https://www.openexo.com).
 
-apk add git
-
-git clone https://github.com/exolever/pyaccredible.git
-
-## Build
-
-- docker build -t erseco/whois:debian -f Dockerfile.debian .
-- docker build -t erseco/whois:debianslim -f Dockerfile.debianslim .
-- docker build -t erseco/whois:python -f Dockerfile.python .
-- docker build -t erseco/whois:alpine -f Dockerfile.alpine .
-
-docker images whois
-
-
-
-Usa el --cache-from=container
-
-docker pull erseco/
-
-concatena los ENV y demás con \
+https://eslib.re/2019/programa/bd_ml/optimizando_dockerfiles.html
