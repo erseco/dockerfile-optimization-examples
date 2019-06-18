@@ -5,25 +5,25 @@ services:
   - docker
 
 before_install:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
   - time docker build -t erseco/dockerfile-optimization-examples:debian -f Dockerfile.debian .
-  - docker push erseco/dockerfile-optimization-examples:debian
+  # - docker push erseco/dockerfile-optimization-examples:debian
 
   - time docker build -t erseco/dockerfile-optimization-examples:debianslim -f Dockerfile.debianslim .
-  - docker push erseco/dockerfile-optimization-examples:debianslim
+  # - docker push erseco/dockerfile-optimization-examples:debianslim
 
   - time docker build -t erseco/dockerfile-optimization-examples:python -f Dockerfile.python .
-  - docker push erseco/dockerfile-optimization-examples:python
+  # - docker push erseco/dockerfile-optimization-examples:python
 
   - time docker build -t erseco/dockerfile-optimization-examples:pythonoptimized -f Dockerfile.pythonoptimized .
-  - docker push erseco/dockerfile-optimization-examples:pythonoptimized
+  # - docker push erseco/dockerfile-optimization-examples:pythonoptimized
 
   - time docker build -t erseco/dockerfile-optimization-examples:alpine -f Dockerfile.alpine .
-  - docker push erseco/dockerfile-optimization-examples:alpine
+  # - docker push erseco/dockerfile-optimization-examples:alpine
 
   - time docker build -t erseco/dockerfile-optimization-examples:scratch -f Dockerfile.scratch .
-  - docker push erseco/dockerfile-optimization-examples:scratch
+  # - docker push erseco/dockerfile-optimization-examples:scratch
 
   - docker images
 
