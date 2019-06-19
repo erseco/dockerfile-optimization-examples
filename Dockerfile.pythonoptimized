@@ -4,8 +4,7 @@ COPY requirements.txt .
 
 # Install build deps, then run `pip install`,
 # then remove unneeded build deps all in a single step.
-RUN apk add --no-cache \
-        jpeg \
+RUN apk add --no-cache jpeg libpng \
     && \
     apk add --no-cache --virtual .build-deps  \
         build-base \
